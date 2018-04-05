@@ -97,12 +97,12 @@ instruments:
     driver: qcodes.instrument_drivers.yokogawa.GS200
     type: GS200
     address: 'USB0::0x0B21::0x0039::91RB18716::INSTR'
-    auto_reconnect: true
+    force_close_existing_instrument: true
 
   Alazar:
     driver: qcodes.instrument_drivers.AlazarTech.ATS9360
     type: AlazarTech_ATS9360
-    auto_reconnect: true
+    force_close_existing_instrument: true
     parameters:
       clock_source: {value: 'INTERNAL_CLOCK'}
       sample_rate: {value: 1_000_000_000}
@@ -123,4 +123,4 @@ instruments:
     type: ATSChannelController
     init:
       alazar_name: 'Alazar'
-    auto_reconnect: true
+    force_close_existing_instrument: true
