@@ -193,4 +193,13 @@ class StationConfigurator:
         # restart Monitor
         Monitor(*self.monitor_parameters.values())
 
+        post_config_func_name = instr_cfg.get('post_config_function', None)
+        if post_config_func_name is not None:
+            myfunc = getattr(instr, post_config_func_name, None)
+            if myfunc is not None:
+                myfunc()
+            else:
+                log.warning("Could not execute function "
+                            f"{post_config_func_name} "
+                            f"on {identifier}")
         return instr
